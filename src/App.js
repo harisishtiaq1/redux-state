@@ -8,8 +8,9 @@ import Main from "./Components/Main";
 import SideBar from "./Components/SideBar";
 function App() {
   return (
-    <>
-        {/* <SideBar/> */}
+    <div>
+      <BrowserRouter>
+        <SideBar>
           <Routes>
             <Route path="/" exact element={<Main />} />
             <Route path="/posts" exact element={<Posts />} />
@@ -18,8 +19,9 @@ function App() {
             <Route path="/albums" exact element={<Albums />} />
             <Route path="/users" exact element={<Users />} />
           </Routes>
-      
-    </>
+        </SideBar>
+      </BrowserRouter>
+    </div>
   );
 }
 

@@ -50,7 +50,7 @@ function Comments() {
     <>
       {isError !== "" && <h2>{isError}</h2>}
       <TableContainer component={Paper}>
-        <Table sx={{ maxWidth: 600 }} aria-label="simple table">
+        <Table sx={{ width: 1109 }} aria-label="simple table">
           <TableHead>
             <StyledTableRow>
               <StyledTableCell>Id</StyledTableCell>

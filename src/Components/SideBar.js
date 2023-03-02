@@ -5,19 +5,21 @@ import CssBaseline from "@mui/material/CssBaseline";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { Link, List, ListItem } from "@mui/material";
+import {  List, ListItem } from "@mui/material";
+import {Link} from "react-router-dom"
 import { styled } from "@mui/system";
 
 const drawerWidth = 240;
 const Holder = styled(AppBar)(({ theme }) => ({
-  zIndex: theme.zIndex.drawer + 1,
+  // zIndex: theme.zIndex.drawer + 1,
 }));
-export default function PermanentDrawerLeft() {
+export default function PermanentDrawerLeft({ children }) {
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex"}}>
       <CssBaseline />
       {/* <Holder> */}
-      <Holder position="fixed" sx={{ backgroundColor: "blueviolet" }}>
+      <Holder
+       sx={{ backgroundColor: "blueviolet" }}>
         <Toolbar>
           <Typography variant="h6" noWrap component="div">
             Redux Task
@@ -37,47 +39,46 @@ export default function PermanentDrawerLeft() {
         }}
         variant="permanent"
         anchor="left"
-        position="fixed"
       >
         <Toolbar />
         <Box p={2} sx={{ textAlign: "center" }} width="200px">
           <List>
             <ListItem>
-              <Link to='/' sx={{ cursor: "pointer" }}>Home</Link>
+              <Link to="/" sx={{ cursor: "pointer" }}>
+                Home
+              </Link>
             </ListItem>
           </List>
           <List>
             <ListItem>
-              <Link sx={{ cursor: "pointer" }}>Posts</Link>
+              <Link to="/posts" sx={{ cursor: "pointer" }}>Posts</Link>
             </ListItem>
           </List>
           <List>
             <ListItem>
-              <Link sx={{ cursor: "pointer" }}>Comments</Link>
+              <Link to="/comments" sx={{ cursor: "pointer" }}>Comments</Link>
             </ListItem>
           </List>
           <List>
             <ListItem>
-              <Link sx={{ cursor: "pointer" }}>Albums</Link>
+              <Link to='/albums' sx={{ cursor: "pointer" }}>Albums</Link>
             </ListItem>
           </List>
           <List>
             <ListItem>
-              <Link sx={{ cursor: "pointer" }}>Photos</Link>
+              <Link to='/todos' sx={{ cursor: "pointer" }}>Todos</Link>
             </ListItem>
           </List>
           <List>
             <ListItem>
-              <Link sx={{ cursor: "pointer" }}>Todos</Link>
-            </ListItem>
-          </List>
-          <List>
-            <ListItem>
-              <Link sx={{ cursor: "pointer" }}>Users</Link>
+              <Link to='/users' sx={{ cursor: "pointer" }}>Users</Link>
             </ListItem>
           </List>
         </Box>
       </Drawer>
+      <Box sx={{mt:8}}>
+      <main>{children}</main>
+      </Box>
     </Box>
   );
 }
