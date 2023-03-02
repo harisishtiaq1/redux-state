@@ -2,7 +2,7 @@ import React from "react";
 import { AppBar,Toolbar,Typography } from "@mui/material";
 function Navbar() {
   return (
-    <AppBar position="relative">
+    <AppBar position="relative" sx={{backgroundColor:'blueViolet'}}>
       <Toolbar>
         <Typography variant="h6" color="inherit" noWrap>
           Redux Work
