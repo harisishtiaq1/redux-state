@@ -61,7 +61,7 @@ function Comments() {
             </StyledTableRow>
           </TableHead>
           <TableBody>
-            {myData.slice(0,100).map((post) => {
+            {myData.slice(0, 100).map((post) => {
               const { name, email, body, id } = post;
               return (
                 <StyledTableRow>

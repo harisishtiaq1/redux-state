@@ -61,7 +61,7 @@ function Users() {
           </TableHead>
           <TableBody>
             {myData.map((post) => {
-              const { id,name,email,address,company} = post;
+              const { id, name, email, address, company } = post;
               return (
                 <StyledTableRow>
                   <StyledTableCell component="th" scope="row">
@@ -76,7 +76,9 @@ function Users() {
                   <StyledTableCell component="th" scope="row">
                     {address.city}
                   </StyledTableCell>
-                  <StyledTableCell align="left">{address.zipcode}</StyledTableCell>
+                  <StyledTableCell align="left">
+                    {address.zipcode}
+                  </StyledTableCell>
                   <StyledTableCell align="left">{company.name}</StyledTableCell>
                 </StyledTableRow>
               );

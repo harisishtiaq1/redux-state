@@ -50,7 +50,7 @@ function Posts() {
       <TableContainer component={Paper}>
         <Table sx={{ maxWidth: 600 }} aria-label="simple table">
           <TableHead>
-            <StyledTableRow >
+            <StyledTableRow>
               <StyledTableCell>Id</StyledTableCell>
               <StyledTableCell align="left">Title</StyledTableCell>
               <StyledTableCell align="left">Body</StyledTableCell>
@@ -64,9 +64,12 @@ function Posts() {
                   <StyledTableCell component="th" scope="row">
                     {id}
                   </StyledTableCell>
-                  <StyledTableCell align="left">{title.substring(0,15)}</StyledTableCell>
-                  <StyledTableCell align="left">{body.substring(0, 50)}</StyledTableCell>
-                  
+                  <StyledTableCell align="left">
+                    {title.substring(0, 15)}
+                  </StyledTableCell>
+                  <StyledTableCell align="left">
+                    {body.substring(0, 50)}
+                  </StyledTableCell>
                 </StyledTableRow>
               );
             })}

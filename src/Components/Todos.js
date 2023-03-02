@@ -57,7 +57,7 @@ function Todos() {
           </TableHead>
           <TableBody>
             {myData.map((post) => {
-              const { id, title,} = post;
+              const { id, title } = post;
               return (
                 <StyledTableRow>
                   <StyledTableCell component="th" scope="row">
