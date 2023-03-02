@@ -1,12 +1,18 @@
-import "./App.css";
-import Drawer from "./Components/Drawer"
-import Navbar from "./Components/Navbar";
-import Sidebar from "./Components/Sidebar";
+import Posts from "./Components/Posts"
+import Comments from "./Components/Comments"
+import Albums from "./Components/Albums"
+import Todos from "./Components/Todos"
+import Users from "./Components/Users"
 function App() {
   return (
     <div>
-      <Navbar/>
-      <Sidebar/>
+      {/* <Drawer/>
+      <Main/> */}
+      {/* <Posts/> */}
+      {/* <Comments/> */}
+      {/* <Albums/> */}
+      {/* <Todos/> */}
+      <Users/>
     </div>
   );
 }

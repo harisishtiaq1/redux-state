@@ -17,18 +17,18 @@ export default function PermanentDrawerLeft() {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <Holder>
-      <AppBar
+      {/* <Holder> */}
+      <Holder
         position="fixed"
-        sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px`,backgroundColor:"blueviolet" }}
+        sx={{ backgroundColor:"blueviolet" }}
       >
         <Toolbar>
           <Typography variant="h6" noWrap component="div">
             Redux Task
           </Typography>
         </Toolbar>
-      </AppBar>
       </Holder>
+      {/* </Holder> */}
       <Drawer
         sx={{
           backgroundColor:'black',
@@ -41,6 +41,7 @@ export default function PermanentDrawerLeft() {
         }}
         variant="permanent"
         anchor="left"
+        position='fixed'
       >
         <Toolbar/>
         <Box p={2} sx={{ textAlign: "center" }} width="200px">
