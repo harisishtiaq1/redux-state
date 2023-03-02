@@ -5,14 +5,19 @@ import CssBaseline from "@mui/material/CssBaseline";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import {  Link, List, ListItem } from "@mui/material";
+import {  createTheme, Link, List, ListItem } from "@mui/material";
+import { styled } from "@mui/system";
 
 const drawerWidth = 240;
-
+const theme=createTheme();
+const Holder = styled(AppBar)(() => ({
+  zIndex: theme.zIndex.drawer + 1,
+}));
 export default function PermanentDrawerLeft() {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
+      <Holder>
       <AppBar
         position="fixed"
         sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px`,backgroundColor:"blueviolet" }}
@@ -23,6 +28,7 @@ export default function PermanentDrawerLeft() {
           </Typography>
         </Toolbar>
       </AppBar>
+      </Holder>
       <Drawer
         sx={{
           backgroundColor:'black',

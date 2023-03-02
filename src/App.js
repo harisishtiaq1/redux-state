@@ -1,9 +1,12 @@
 import "./App.css";
 import Drawer from "./Components/Drawer"
+import Navbar from "./Components/Navbar";
+import Sidebar from "./Components/Sidebar";
 function App() {
   return (
     <div>
-      <Drawer/>
+      <Navbar/>
+      <Sidebar/>
     </div>
   );
 }
