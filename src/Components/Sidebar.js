@@ -1,15 +1,7 @@
 import { Drawer, Link, Box, List, ListItem } from "@mui/material";
-import React, { useState } from "react";
+import React from "react";
 
 function Sidebar() {
-  const styles = {
-    sideNav: {
-      marginTop: "-60px",
-      zIndex: 3,
-      marginLeft: "0px",
-      position: "fixed",
-    },
-  };
   return (
     <Drawer anchor="left" variant="permanent">
       <Box p={2} sx={{ textAlign: "center" }} width="200px">
