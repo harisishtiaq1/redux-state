@@ -9,8 +9,7 @@ import {  createTheme, Link, List, ListItem } from "@mui/material";
 import { styled } from "@mui/system";
 
 const drawerWidth = 240;
-const theme=createTheme();
-const Holder = styled(AppBar)(() => ({
+const Holder = styled(AppBar)(({theme}) => ({
   zIndex: theme.zIndex.drawer + 1,
 }));
 export default function PermanentDrawerLeft() {

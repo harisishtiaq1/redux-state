@@ -28,7 +28,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     border: 0,
   },
 }));
-function Posts() {
+function Comments() {
   const [myData, setMyData] = useState([]);
   const [isError, setIsError] = useState("");
   const getMyPostData = async () => {
@@ -85,4 +85,4 @@ function Posts() {
   );
 }
 
-export default Posts;
+export default Comments;
