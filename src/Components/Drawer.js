@@ -5,7 +5,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
+import {  Link, List, ListItem } from "@mui/material";
 
 const drawerWidth = 240;
 
@@ -15,7 +15,7 @@ export default function PermanentDrawerLeft() {
       <CssBaseline />
       <AppBar
         position="fixed"
-        sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
+        sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px`,backgroundColor:"blueviolet" }}
       >
         <Toolbar>
           <Typography variant="h6" noWrap component="div">
@@ -25,6 +25,7 @@ export default function PermanentDrawerLeft() {
       </AppBar>
       <Drawer
         sx={{
+          backgroundColor:'black',
           width: drawerWidth,
           flexShrink: 0,
           "& .MuiDrawer-paper": {
@@ -35,15 +36,45 @@ export default function PermanentDrawerLeft() {
         variant="permanent"
         anchor="left"
       >
-        <Toolbar />
-        <Divider />
-      </Drawer>
-      <Box
-        component="main"
-        sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}
-      >
-        <Toolbar />
+        <Toolbar/>
+        <Box p={2} sx={{ textAlign: "center" }} width="200px">
+        <List>
+          <ListItem>
+            <Link sx={{ cursor: "pointer" }}>Home</Link>
+          </ListItem>
+        </List>
+        <List>
+          <ListItem>
+            <Link sx={{ cursor: "pointer" }}>Posts</Link>
+          </ListItem>
+        </List>
+        <List>
+          <ListItem>
+            <Link sx={{ cursor: "pointer" }}>Comments</Link>
+          </ListItem>
+        </List>
+        <List>
+          <ListItem>
+            <Link sx={{ cursor: "pointer" }}>Albums</Link>
+          </ListItem>
+        </List>
+        <List>
+          <ListItem>
+            <Link sx={{ cursor: "pointer" }}>Photos</Link>
+          </ListItem>
+        </List>
+        <List>
+          <ListItem>
+            <Link sx={{ cursor: "pointer" }}>Todos</Link>
+          </ListItem>
+        </List>
+        <List>
+          <ListItem>
+            <Link sx={{ cursor: "pointer" }}>Users</Link>
+          </ListItem>
+        </List>
       </Box>
+      </Drawer>
     </Box>
   );
 }
