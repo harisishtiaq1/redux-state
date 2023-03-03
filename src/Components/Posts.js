@@ -8,6 +8,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { useSelector,useDispatch } from "react-redux";
+import { getBooks } from "./Slice/PostSlice";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -28,24 +30,31 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 function Posts() {
-  const [myData, setMyData] = useState([]);
-  const [isError, setIsError] = useState("");
-  const getMyPostData = async () => {
-    try {
-      const res = await axios.get(`https://jsonplaceholder.typicode.com/posts`);
-      setMyData(res.data.slice(0,50));
-      console.log("data here", setMyData);
-    } catch (error) {
-      setIsError(error.message);
-    }
-  };
+  const [books,message]=useSelector((state)=>state.book)
+  // const [myData, setMyData] = useState([]);
+  // const [isError, setIsError] = useState("");
+  // const getMyPostData = async () => {
+  //   try {
+  //     const res = await axios.get(`https://jsonplaceholder.typicode.com/posts`);
+  //     setMyData(res.data.slice(0,50));
+  //     console.log("data here", setMyData);
+  //   } catch (error) {
+  //     setIsError(error.message);
+  //   }
+  // };
 
-  useEffect(() => {
-    getMyPostData();
-  }, []);
+  // useEffect(() => {
+  //   getMyPostData();
+  // }, []);
+  
+  const dispatch=useDispatch();
+  
+  useEffect(()=>{
+    dispatch(getBooks()).unwrap()
+  },[])
   return (
     <>
-      {isError !== "" && <h2>{isError}</h2>}
+      {message !== "" && <h2>{message}</h2>}
       <TableContainer component={Paper}>
         <Table sx={{ width: 980 }} aria-label="simple table">
           <TableHead>
@@ -56,7 +65,7 @@ function Posts() {
             </StyledTableRow>
           </TableHead>
           <TableBody>
-            {myData.map((post) => {
+            {books && books.map((post) => {
               const { body, id, title } = post;
               return (
                 <StyledTableRow>
