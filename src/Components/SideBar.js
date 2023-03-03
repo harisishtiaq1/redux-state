@@ -39,6 +39,7 @@ function SideBar({ children }) {
           backgroundColor: "blueviolet",
           width: `calc(100% - ${drawerWidth}px)`,
           ml: `${drawerWidth}px`,
+          // position:'absolute'
         }}
       >
         <Toolbar>

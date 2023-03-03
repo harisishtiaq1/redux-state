@@ -8,7 +8,7 @@ import Main from "./Components/Main";
 import SideBar from "./Components/SideBar";
 function App() {
   return (
-    <div>
+    <>
       <BrowserRouter>
         <SideBar>
           <Routes>
@@ -21,7 +21,7 @@ function App() {
           </Routes>
         </SideBar>
       </BrowserRouter>
-    </div>
+    </>
   );
 }
 
