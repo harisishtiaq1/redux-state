@@ -1,5 +1,5 @@
 import { React, useEffect } from "react";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -30,17 +30,17 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 function Users() {
-  const {userBooks,message}=useSelector((state)=>state.userReducer)
-  const dispatch=useDispatch();
+  const { userBooks, message } = useSelector((state) => state.userReducer);
+  const dispatch = useDispatch();
 
-  useEffect(()=>{
-    dispatch(getBooks()).unwrap()
-  },[])
+  useEffect(() => {
+    dispatch(getBooks()).unwrap();
+  }, []);
   return (
     <>
       {message !== "" && <h2>{message}</h2>}
       <TableContainer component={Paper}>
-        <Table  aria-label="simple table">
+        <Table aria-label="simple table">
           <TableHead>
             <StyledTableRow>
               <StyledTableCell>Id</StyledTableCell>
@@ -52,29 +52,32 @@ function Users() {
             </StyledTableRow>
           </TableHead>
           <TableBody>
-            {userBooks && userBooks.map((post) => {
-              const { id, name, email, address, company } = post;
-              return (
-                <StyledTableRow>
-                  <StyledTableCell component="th" scope="row">
-                    {id}
-                  </StyledTableCell>
-                  <StyledTableCell component="th" scope="row">
-                    {name}
-                  </StyledTableCell>
-                  <StyledTableCell component="th" scope="row">
-                    {email}
-                  </StyledTableCell>
-                  <StyledTableCell component="th" scope="row">
-                    {address.city}
-                  </StyledTableCell>
-                  <StyledTableCell align="left">
-                    {address.zipcode}
-                  </StyledTableCell>
-                  <StyledTableCell align="left">{company.name}</StyledTableCell>
-                </StyledTableRow>
-              );
-            })}
+            {userBooks &&
+              userBooks.map((post) => {
+                const { id, name, email, address, company } = post;
+                return (
+                  <StyledTableRow>
+                    <StyledTableCell component="th" scope="row">
+                      {id}
+                    </StyledTableCell>
+                    <StyledTableCell component="th" scope="row">
+                      {name}
+                    </StyledTableCell>
+                    <StyledTableCell component="th" scope="row">
+                      {email}
+                    </StyledTableCell>
+                    <StyledTableCell component="th" scope="row">
+                      {address.city}
+                    </StyledTableCell>
+                    <StyledTableCell align="left">
+                      {address.zipcode}
+                    </StyledTableCell>
+                    <StyledTableCell align="left">
+                      {company.name}
+                    </StyledTableCell>
+                  </StyledTableRow>
+                );
+              })}
           </TableBody>
         </Table>
       </TableContainer>

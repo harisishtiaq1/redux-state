@@ -7,7 +7,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { getBooks } from "./Slice/PostSlice";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -29,13 +29,13 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 function Posts() {
-  const {postBooks,message}=useSelector((state)=>state.postReducer)
+  const { postBooks, message } = useSelector((state) => state.postReducer);
 
-  const dispatch=useDispatch();
-  
-  useEffect(()=>{
-    dispatch(getBooks()).unwrap()
-  },[])
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getBooks()).unwrap();
+  }, []);
   return (
     <>
       {message !== "" && <h2>{message}</h2>}
@@ -49,22 +49,23 @@ function Posts() {
             </StyledTableRow>
           </TableHead>
           <TableBody>
-            {postBooks && postBooks.map((post) => {
-              const { body, id, title } = post;
-              return (
-                <StyledTableRow>
-                  <StyledTableCell component="th" scope="row">
-                    {id}
-                  </StyledTableCell>
-                  <StyledTableCell align="left">
-                    {title.substring(0, 15)}
-                  </StyledTableCell>
-                  <StyledTableCell align="left">
-                    {body.substring(0, 50)}
-                  </StyledTableCell>
-                </StyledTableRow>
-              );
-            })}
+            {postBooks &&
+              postBooks.map((post) => {
+                const { body, id, title } = post;
+                return (
+                  <StyledTableRow>
+                    <StyledTableCell component="th" scope="row">
+                      {id}
+                    </StyledTableCell>
+                    <StyledTableCell align="left">
+                      {title.substring(0, 15)}
+                    </StyledTableCell>
+                    <StyledTableCell align="left">
+                      {body.substring(0, 50)}
+                    </StyledTableCell>
+                  </StyledTableRow>
+                );
+              })}
           </TableBody>
         </Table>
       </TableContainer>

@@ -7,7 +7,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { getBooks } from "./Slice/TodosSlice";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -30,16 +30,16 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 function Todos() {
-  const {todoBooks,message}=useSelector((state)=>state.todoReducer)
-  const dispatch=useDispatch();
-  useEffect(()=>{
-    dispatch(getBooks()).unwrap()
-  },[])
+  const { todoBooks, message } = useSelector((state) => state.todoReducer);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getBooks()).unwrap();
+  }, []);
   return (
     <>
-      {message  && <h2>{message}</h2>}
+      {message && <h2>{message}</h2>}
       <TableContainer component={Paper}>
-        <Table  aria-label="simple table">
+        <Table aria-label="simple table">
           <TableHead>
             <StyledTableRow>
               <StyledTableCell>Id</StyledTableCell>
@@ -47,17 +47,18 @@ function Todos() {
             </StyledTableRow>
           </TableHead>
           <TableBody>
-            {todoBooks && todoBooks.map((post) => {
-              const { id, title } = post;
-              return (
-                <StyledTableRow>
-                  <StyledTableCell component="th" scope="row">
-                    {id}
-                  </StyledTableCell>
-                  <StyledTableCell align="left">{title}</StyledTableCell>
-                </StyledTableRow>
-              );
-            })}
+            {todoBooks &&
+              todoBooks.map((post) => {
+                const { id, title } = post;
+                return (
+                  <StyledTableRow>
+                    <StyledTableCell component="th" scope="row">
+                      {id}
+                    </StyledTableCell>
+                    <StyledTableCell align="left">{title}</StyledTableCell>
+                  </StyledTableRow>
+                );
+              })}
           </TableBody>
         </Table>
       </TableContainer>

@@ -7,7 +7,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { getBooks } from "./Slice/AlbumSlice";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -30,19 +30,19 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 function Albums() {
-  const {books,message}=useSelector((state)=>state.albumReducer)
-  console.log({books});
-  console.log({message});
+  const { books, message } = useSelector((state) => state.albumReducer);
+  console.log({ books });
+  console.log({ message });
 
-  const dispatch=useDispatch();
-  
-  useEffect(()=>{
-    dispatch(getBooks()).unwrap()
-  },[])
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getBooks()).unwrap();
+  }, []);
 
   return (
     <>
-      {message  && <h2>{message}</h2>}
+      {message && <h2>{message}</h2>}
       <TableContainer component={Paper}>
         <Table aria-label="simple table">
           <TableHead>
@@ -52,18 +52,18 @@ function Albums() {
             </StyledTableRow>
           </TableHead>
           <TableBody>
-            {books && books.map((post) => {
-  const { id, title } = post;
-  return (
-    <StyledTableRow key={id}>
-      <StyledTableCell component="th" scope="row">
-        {id}
-      </StyledTableCell>
-      <StyledTableCell align="left">{title}</StyledTableCell>
-    </StyledTableRow>
-  );
-})}
-
+            {books &&
+              books.map((post) => {
+                const { id, title } = post;
+                return (
+                  <StyledTableRow key={id}>
+                    <StyledTableCell component="th" scope="row">
+                      {id}
+                    </StyledTableCell>
+                    <StyledTableCell align="left">{title}</StyledTableCell>
+                  </StyledTableRow>
+                );
+              })}
           </TableBody>
         </Table>
       </TableContainer>
