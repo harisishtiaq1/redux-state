@@ -18,7 +18,6 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     fontSize: 14,
   },
 }));
-
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
   "&:nth-of-type(odd)": {
     backgroundColor: theme.palette.action.hover,
@@ -34,7 +33,7 @@ function Posts() {
   const getMyPostData = async () => {
     try {
       const res = await axios.get(`https://jsonplaceholder.typicode.com/posts`);
-      setMyData(res.data);
+      setMyData(res.data.slice(0,50));
       console.log("data here", setMyData);
     } catch (error) {
       setIsError(error.message);

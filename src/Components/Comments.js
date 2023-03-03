@@ -50,8 +50,8 @@ function Comments() {
     <>
       {isError !== "" && <h2>{isError}</h2>}
       <TableContainer component={Paper}>
-        <Table sx={{ width: 1109 }} aria-label="simple table">
-          <TableHead>
+        <Table sx={{ width: 1109 }} aria-label="sticky table" stickyHeader>
+          <TableHead position="fixed">
             <StyledTableRow>
               <StyledTableCell>Id</StyledTableCell>
               <StyledTableCell align="left">Name</StyledTableCell>
@@ -61,7 +61,7 @@ function Comments() {
             </StyledTableRow>
           </TableHead>
           <TableBody>
-            {myData.slice(0, 100).map((post) => {
+            {myData.slice(0, 50).map((post) => {
               const { name, email, body, id } = post;
               return (
                 <StyledTableRow>
