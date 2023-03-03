@@ -25,6 +25,11 @@ const navLinkStyles = ({ isActive }) => {
     color: isActive ? "cyan" : "white",
   };
 };
+const navLink = ({ isActive }) => {
+  return {
+    backgroundColor: isActive ? "red" : "black",
+  };
+};
 const StyledLink = styled(NavLink)`
   text-decoration: none;
   &:hover {
@@ -70,7 +75,7 @@ export default function PermanentDrawerLeft({ children }) {
         >
          
           <List>
-            <ListItem>
+            <ListItem style={{navLink}}>
             <HomeIcon sx={{color:'white',mr:2,mb:0.5}}/>
               <StyledLink
                 to="/"

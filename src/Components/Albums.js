@@ -8,6 +8,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { useSelector,useDispatch } from "react-redux";
+import { getBooks } from "./Slice/AlbumSlice";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -29,28 +31,21 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 function Albums() {
-  const [myData, setMyData] = useState([]);
-  const [isError, setIsError] = useState("");
-  const getMyPostData = async () => {
-    try {
-      const res = await axios.get(
-        `https://jsonplaceholder.typicode.com/albums`
-      );
-      setMyData(res.data);
-      console.log("data here", setMyData);
-    } catch (error) {
-      setIsError(error.message);
-    }
-  };
+  const {books,message}=useSelector((state)=>state.book)
+  console.log({books});
+  console.log({message});
 
-  useEffect(() => {
-    getMyPostData();
-  }, []);
+  const dispatch=useDispatch();
+  
+  useEffect(()=>{
+    dispatch(getBooks()).unwrap()
+  },[])
+
   return (
     <>
-      {isError !== "" && <h2>{isError}</h2>}
+      {message  && <h2>{message}</h2>}
       <TableContainer component={Paper}>
-        <Table sx={{ width: 1109 }} aria-label="simple table">
+        <Table sx={{ width: 980 }} aria-label="simple table">
           <TableHead>
             <StyledTableRow>
               <StyledTableCell>Id</StyledTableCell>
@@ -58,17 +53,18 @@ function Albums() {
             </StyledTableRow>
           </TableHead>
           <TableBody>
-            {myData.map((post) => {
-              const { id, title } = post;
-              return (
-                <StyledTableRow>
-                  <StyledTableCell component="th" scope="row">
-                    {id}
-                  </StyledTableCell>
-                  <StyledTableCell align="left">{title}</StyledTableCell>
-                </StyledTableRow>
-              );
-            })}
+            {books && books.map((post) => {
+  const { id, title } = post;
+  return (
+    <StyledTableRow key={id}>
+      <StyledTableCell component="th" scope="row">
+        {id}
+      </StyledTableCell>
+      <StyledTableCell align="left">{title}</StyledTableCell>
+    </StyledTableRow>
+  );
+})}
+
           </TableBody>
         </Table>
       </TableContainer>

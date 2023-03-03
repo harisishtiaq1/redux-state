@@ -2,7 +2,7 @@ import React from "react";
 import { Grid, Typography, Box, Stack, Container } from "@mui/material";
 function Main() {
   return (
-    <Box sx={{ ml: 35,mb:5 }}>
+    <Box sx={{ ml: 35 }}>
       <Grid container spacing={2}>
         <Grid item xs={12} md={6} lg={3}>
           <Box
