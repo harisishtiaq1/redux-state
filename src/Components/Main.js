@@ -3,7 +3,7 @@ import { Grid, Typography, Box, Stack, Container } from "@mui/material";
 function Main() {
   return (
     
-    <Box sx={{ mt: 9, ml:50 }}>
+    <Box sx={{ ml:35 }}>
       <Grid container spacing={2}>
         <Grid item xs={12} md={6} lg={3}>
           <Box
