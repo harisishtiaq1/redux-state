@@ -1,5 +1,5 @@
-import { React, useState, useEffect } from "react";
-import axios from "axios";
+import { React, useEffect } from "react";
+import { useSelector,useDispatch } from "react-redux";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -8,6 +8,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { getBooks } from "./Slice/UsersSlice";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -29,26 +30,17 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 function Users() {
-  const [myData, setMyData] = useState([]);
-  const [isError, setIsError] = useState("");
-  const getMyPostData = async () => {
-    try {
-      const res = await axios.get(`https://jsonplaceholder.typicode.com/users`);
-      setMyData(res.data);
-      console.log("data here", setMyData);
-    } catch (error) {
-      setIsError(error.message);
-    }
-  };
+  const {userBooks,message}=useSelector((state)=>state.userReducer)
+  const dispatch=useDispatch();
 
-  useEffect(() => {
-    getMyPostData();
-  }, []);
+  useEffect(()=>{
+    dispatch(getBooks()).unwrap()
+  },[])
   return (
     <>
-      {isError !== "" && <h2>{isError}</h2>}
+      {message !== "" && <h2>{message}</h2>}
       <TableContainer component={Paper}>
-        <Table sx={{ width: 980 }} aria-label="simple table">
+        <Table  aria-label="simple table">
           <TableHead>
             <StyledTableRow>
               <StyledTableCell>Id</StyledTableCell>
@@ -60,7 +52,7 @@ function Users() {
             </StyledTableRow>
           </TableHead>
           <TableBody>
-            {myData.map((post) => {
+            {userBooks && userBooks.map((post) => {
               const { id, name, email, address, company } = post;
               return (
                 <StyledTableRow>

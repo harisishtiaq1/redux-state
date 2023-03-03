@@ -1,5 +1,4 @@
-import { React, useState, useEffect } from "react";
-import axios from "axios";
+import { React,useEffect } from "react";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -8,7 +7,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-
+import { useSelector,useDispatch } from "react-redux";
+import { getBooks } from "./Slice/CommentsSlice";
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
@@ -29,28 +29,17 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 function Comments() {
-  const [myData, setMyData] = useState([]);
-  const [isError, setIsError] = useState("");
-  const getMyPostData = async () => {
-    try {
-      const res = await axios.get(
-        `https://jsonplaceholder.typicode.com/comments`
-      );
-      setMyData(res.data);
-      console.log("data here", setMyData);
-    } catch (error) {
-      setIsError(error.message);
-    }
-  };
-
-  useEffect(() => {
-    getMyPostData();
-  }, []);
+  const {commentBooks,message}=useSelector((state)=>state.commentReducer)
+  const dispatch=useDispatch();
+  
+  useEffect(()=>{
+    dispatch(getBooks()).unwrap()
+  },[])
   return (
     <>
-      {isError !== "" && <h2>{isError}</h2>}
+      {message  && <h2>{message}</h2>}
       <TableContainer component={Paper}>
-        <Table sx={{ width: 980 }} aria-label="sticky table" stickyHeader>
+        <Table aria-label="sticky table" stickyHeader>
           <TableHead position="fixed">
             <StyledTableRow>
               <StyledTableCell>Id</StyledTableCell>
@@ -61,7 +50,7 @@ function Comments() {
             </StyledTableRow>
           </TableHead>
           <TableBody>
-            {myData.slice(0, 50).map((post) => {
+            {commentBooks && commentBooks.slice(0, 50).map((post) => {
               const { name, email, body, id } = post;
               return (
                 <StyledTableRow>

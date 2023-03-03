@@ -25,24 +25,18 @@ const navLinkStyles = ({ isActive }) => {
     color: isActive ? "cyan" : "white",
   };
 };
-const navLink = ({ isActive }) => {
-  return {
-    backgroundColor: isActive ? "red" : "black",
-  };
-};
 const StyledLink = styled(NavLink)`
   text-decoration: none;
-  &:hover {
-    color: grey;
-  }
 `;
 
-export default function PermanentDrawerLeft({ children }) {
+function SideBar({ children }) {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       {/* <Holder> */}
-      <Holder sx={{ backgroundColor: "blueviolet" }}>
+      <Holder sx={{ backgroundColor: "blueviolet",width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px`
+       }}
+      >
         <Toolbar>
           <Typography variant="h6" noWrap component="div">
             Redux Task
@@ -50,15 +44,14 @@ export default function PermanentDrawerLeft({ children }) {
         </Toolbar>
       </Holder>
       {/* </Holder> */}
+      <Box sx={{display:"flex",flexDirection:'row'}}>
       <Drawer
         sx={{
-          backgroundColor: "Black",
-          width: drawerWidth,
-          flexShrink: 0,
+         
           "& .MuiDrawer-paper": {
+            backgroundColor: "Black",
             width: drawerWidth,
-            boxSizing: "border-box",
-            backgroundColor: "unset",
+            flexShrink: 0,
           },
         }}
         variant="permanent"
@@ -75,7 +68,7 @@ export default function PermanentDrawerLeft({ children }) {
         >
          
           <List>
-            <ListItem style={{navLink}}>
+            <ListItem>
             <HomeIcon sx={{color:'white',mr:2,mb:0.5}}/>
               <StyledLink
                 to="/"
@@ -148,9 +141,12 @@ export default function PermanentDrawerLeft({ children }) {
           </List>
         </Box>
       </Drawer>
-      <Box sx={{ mt: 8 }}>
-        <main>{children}</main>
+      <Box sx={{ mt:7,flexGrow:1,ml:30,
+      width:985}} component='main'>
+        {children}
+      </Box>
       </Box>
     </Box>
   );
 }
+export default SideBar;

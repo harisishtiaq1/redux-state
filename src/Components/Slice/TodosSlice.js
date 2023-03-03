@@ -1,15 +1,15 @@
 import { createSlice ,createAsyncThunk} from "@reduxjs/toolkit";
 import axios from "axios"
 const initialState={
-    postBooks:'',
+    todoBooks:'',
     message:''
 }
 
-export const getBooks=createAsyncThunk("posts/getbooks",
+export const getBooks=createAsyncThunk("todos/getbooks",
 async()=>{
     try {
         const res = await axios.get(
-          `https://jsonplaceholder.typicode.com/posts`
+          `https://jsonplaceholder.typicode.com/todos`
         );
         console.log('res.data',res.data);
         return res.data;
@@ -18,13 +18,13 @@ async()=>{
       }
 })
 
-const PostSlice=createSlice({
-    name:'posts',
+const todoSlice=createSlice({
+    name:'todo',
     initialState,
     extraReducers:(builder)=>{
     builder.addCase(getBooks.fulfilled,(state,action)=>{
         console.log({action})
-        state.postBooks=action.payload;
+        state.todoBooks=action.payload;
     })
     
     builder.addCase(getBooks.rejected,(state,action)=>{
@@ -33,5 +33,5 @@ const PostSlice=createSlice({
 }
 })
 
-export default PostSlice.reducer;
-export const PostSliceActions=PostSlice.actions;
+export default todoSlice.reducer;
+export const todoSliceActions=todoSlice.actions;

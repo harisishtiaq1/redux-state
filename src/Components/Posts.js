@@ -1,5 +1,4 @@
-import { React, useState, useEffect } from "react";
-import axios from "axios";
+import { React, useEffect } from "react";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -30,23 +29,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 function Posts() {
-  const [books,message]=useSelector((state)=>state.book)
-  // const [myData, setMyData] = useState([]);
-  // const [isError, setIsError] = useState("");
-  // const getMyPostData = async () => {
-  //   try {
-  //     const res = await axios.get(`https://jsonplaceholder.typicode.com/posts`);
-  //     setMyData(res.data.slice(0,50));
-  //     console.log("data here", setMyData);
-  //   } catch (error) {
-  //     setIsError(error.message);
-  //   }
-  // };
+  const {postBooks,message}=useSelector((state)=>state.postReducer)
 
-  // useEffect(() => {
-  //   getMyPostData();
-  // }, []);
-  
   const dispatch=useDispatch();
   
   useEffect(()=>{
@@ -55,8 +39,8 @@ function Posts() {
   return (
     <>
       {message !== "" && <h2>{message}</h2>}
-      <TableContainer component={Paper}>
-        <Table sx={{ width: 980 }} aria-label="simple table">
+      <TableContainer>
+        <Table aria-label="simple table">
           <TableHead>
             <StyledTableRow>
               <StyledTableCell>Id</StyledTableCell>
@@ -65,7 +49,7 @@ function Posts() {
             </StyledTableRow>
           </TableHead>
           <TableBody>
-            {books && books.map((post) => {
+            {postBooks && postBooks.map((post) => {
               const { body, id, title } = post;
               return (
                 <StyledTableRow>

@@ -30,7 +30,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 function Albums() {
-  const {books,message}=useSelector((state)=>state.book)
+  const {books,message}=useSelector((state)=>state.albumReducer)
   console.log({books});
   console.log({message});
 
@@ -44,7 +44,7 @@ function Albums() {
     <>
       {message  && <h2>{message}</h2>}
       <TableContainer component={Paper}>
-        <Table sx={{ width: 980 }} aria-label="simple table">
+        <Table aria-label="simple table">
           <TableHead>
             <StyledTableRow>
               <StyledTableCell>Id</StyledTableCell>

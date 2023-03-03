@@ -8,6 +8,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { useSelector,useDispatch } from "react-redux";
+import { getBooks } from "./Slice/TodosSlice";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -29,26 +31,16 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 function Todos() {
-  const [myData, setMyData] = useState([]);
-  const [isError, setIsError] = useState("");
-  const getMyPostData = async () => {
-    try {
-      const res = await axios.get(`https://jsonplaceholder.typicode.com/todos`);
-      setMyData(res.data);
-      console.log("data here", setMyData);
-    } catch (error) {
-      setIsError(error.message);
-    }
-  };
-
-  useEffect(() => {
-    getMyPostData();
-  }, []);
+  const {todoBooks,message}=useSelector((state)=>state.todoReducer)
+  const dispatch=useDispatch();
+  useEffect(()=>{
+    dispatch(getBooks()).unwrap()
+  },[])
   return (
     <>
-      {isError !== "" && <h2>{isError}</h2>}
+      {message  && <h2>{message}</h2>}
       <TableContainer component={Paper}>
-        <Table sx={{ width: 980 }} aria-label="simple table">
+        <Table  aria-label="simple table">
           <TableHead>
             <StyledTableRow>
               <StyledTableCell>Id</StyledTableCell>
@@ -56,7 +48,7 @@ function Todos() {
             </StyledTableRow>
           </TableHead>
           <TableBody>
-            {myData.map((post) => {
+            {todoBooks && todoBooks.map((post) => {
               const { id, title } = post;
               return (
                 <StyledTableRow>
