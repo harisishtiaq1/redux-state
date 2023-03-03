@@ -39,7 +39,7 @@ function Posts() {
   return (
     <>
       {message !== "" && <h2>{message}</h2>}
-      <TableContainer>
+      <TableContainer component={Paper}>
         <Table aria-label="simple table">
           <TableHead>
             <StyledTableRow>
