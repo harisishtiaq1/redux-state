@@ -1,9 +1,15 @@
-import {React} from "react";
+import { React } from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
+import CommentIcon from '@mui/icons-material/Comment';
+import EmailIcon from '@mui/icons-material/Email';
+import ListIcon from '@mui/icons-material/List';
+import PhotoLibraryIcon from '@mui/icons-material/PhotoLibrary';
+import PersonIcon from '@mui/icons-material/Person';
+import HomeIcon from '@mui/icons-material/Home';
 import Typography from "@mui/material/Typography";
 import { List, ListItem } from "@mui/material";
 import { NavLink } from "react-router-dom";
@@ -13,19 +19,19 @@ const drawerWidth = 240;
 const Holder = styled(AppBar)(({ theme }) => ({
   // zIndex: theme.zIndex.drawer + 1,
 }));
+const navLinkStyles = ({ isActive }) => {
+  return {
+    fontWeight: isActive ? "bold" : "normal",
+    color: isActive ? "cyan" : "white",
+  };
+};
 const StyledLink = styled(NavLink)`
-    text-decoration: none;
-
-    &:hover {
-        color:grey
-    }
+  text-decoration: none;
+  &:hover {
+    color: grey;
+  }
 `;
-const navLinkStyles=({isActive})=>{
- return{
-   fontWeight:isActive ? 'bold' : 'normal',
-   color:isActive? "white":"blueViolet"
- }
-}
+
 export default function PermanentDrawerLeft({ children }) {
   return (
     <Box sx={{ display: "flex" }}>
@@ -41,7 +47,7 @@ export default function PermanentDrawerLeft({ children }) {
       {/* </Holder> */}
       <Drawer
         sx={{
-          backgroundColor:"Black",
+          backgroundColor: "Black",
           width: drawerWidth,
           flexShrink: 0,
           "& .MuiDrawer-paper": {
@@ -54,45 +60,83 @@ export default function PermanentDrawerLeft({ children }) {
         anchor="left"
       >
         <Toolbar />
-        <Box p={2} sx={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column'}} width="200px">
+        <Box
+          p={2}
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+          }}
+          width="200px"
+        >
+         
           <List>
             <ListItem>
-              <StyledLink to="/" sx={{ cursor: "pointer"}} style={navLinkStyles}>
+            <HomeIcon sx={{color:'white',mr:2,mb:0.5}}/>
+              <StyledLink
+                to="/"
+                sx={{ cursor: "pointer" }}
+                style={navLinkStyles}
+              >
                 Home
               </StyledLink>
             </ListItem>
           </List>
           <List>
             <ListItem>
-              <StyledLink to="/posts" sx={{ cursor: "pointer" }} style={navLinkStyles}>
+            <EmailIcon sx={{color:'white',mr:2,mb:0.5}}/>
+              <StyledLink
+                to="/posts"
+                sx={{ cursor: "pointer" }}
+                style={navLinkStyles}
+              >
                 Posts
               </StyledLink>
             </ListItem>
           </List>
           <List>
             <ListItem>
-              <StyledLink to="/comments" sx={{ cursor: "pointer"}} style={navLinkStyles}>
+            <CommentIcon sx={{color:'white',mr:2,mb:0.5}}/>
+              <StyledLink
+                to="/comments"
+                sx={{ cursor: "pointer" }}
+                style={navLinkStyles}
+              >
                 Comments
               </StyledLink>
             </ListItem>
           </List>
           <List>
             <ListItem>
-              <StyledLink to="/albums" sx={{ cursor: "pointer" }} style={navLinkStyles}>
+            <PhotoLibraryIcon sx={{color:'white',mr:2,mb:0.5}}/>
+              <StyledLink
+                to="/albums"
+                sx={{ cursor: "pointer" }}
+                style={navLinkStyles}
+              >
                 Albums
               </StyledLink>
             </ListItem>
           </List>
           <List>
             <ListItem>
-              <StyledLink to="/todos" sx={{ cursor: "pointer" }} style={navLinkStyles}>
+            <ListIcon sx={{color:'white',mr:2,mb:0.5}}/>
+              <StyledLink
+                to="/todos"
+                sx={{ cursor: "pointer" }}
+                style={navLinkStyles}
+              >
                 Todos
               </StyledLink>
             </ListItem>
           </List>
           <List>
             <ListItem>
-              <StyledLink to="/users" sx={{ cursor: "pointer" }} style={navLinkStyles} >
+            <PersonIcon sx={{color:'white',mr:2,mb:0.5}}/>
+              <StyledLink
+                to="/users"
+                sx={{ cursor: "pointer" }}
+                style={navLinkStyles}
+              >
                 Users
               </StyledLink>
             </ListItem>
