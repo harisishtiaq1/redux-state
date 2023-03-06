@@ -20,7 +20,6 @@ import { styled } from "@mui/system";
 import Person3SharpIcon from "@mui/icons-material/Person3Sharp";
 import logo from "./img/logo.svg";
 
-
 const drawerWidth = 240;
 
 const Holder = styled(AppBar)(({ theme }) => ({
@@ -30,7 +29,8 @@ const navLinkStyles = ({ isActive }) => {
   return {
     fontWeight: isActive ? "bold" : "normal",
     color: isActive ? "cyan" : "white",
-    // backgroundColor: isActive ? 'white': 'transparent'
+
+    backgroundColor: isActive ? "white" : "transparent",
   };
 };
 
