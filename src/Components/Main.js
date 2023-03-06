@@ -21,7 +21,7 @@ function Main() {
                 gutterBottom
                 sx={{ ml: 10 }}
               >
-                Album layout
+                Redux Toolkit
               </Typography>
               <Typography
                 variant="h5"
@@ -30,9 +30,9 @@ function Main() {
                 width={345}
                 paragraph
               >
-                Something short and leading about the collection below—its
-                contents, the creator, etc. Make it short and sweet, but not too
-                short so folks don&apos;t simply skip over it entirely.
+                We can't solve every use case, but in the spirit of
+                create-react-app, we can try to provide some tools that abstract
+                over the setup process and handle the most common use cases.
               </Typography>
               <Stack
                 sx={{ pt: 4 }}
