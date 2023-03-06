@@ -143,7 +143,7 @@ function SideBar({ children }) {
               }}
               width="200px"
             >
-              <List >
+              <List sx={{backgroundColor:'blueviolet'}} >
                 <ListItem >
                   <HomeIcon sx={{ color: "white", mr: 2, mb: 0.5 }} />
                   <StyledLink
@@ -217,7 +217,7 @@ function SideBar({ children }) {
               </List>
             </Box>
           </Drawer>
-          <Box sx={{ mt: 8, flexGrow: 1, ml: 30, width: 1107 }} component="main">
+          <Box sx={{ mt: 8, flexGrow: 1, ml: 30, width: 1107,p:3 }} component="main">
             {children}
           </Box>
         </Box>
