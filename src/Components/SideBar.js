@@ -14,7 +14,7 @@ import { useLocation } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import Typography from "@mui/material/Typography";
 import SearchIcon from "@mui/icons-material/Search";
-import { IconButton, List, ListItem, Menu, MenuItem } from "@mui/material";
+import { IconButton, List, ListItem, Menu, MenuItem ,Link} from "@mui/material";
 import { NavLink } from "react-router-dom";
 import { styled } from "@mui/system";
 import Person3SharpIcon from "@mui/icons-material/Person3Sharp";
@@ -30,7 +30,7 @@ const navLinkStyles = ({ isActive }) => {
     fontWeight: isActive ? "bold" : "normal",
     color: isActive ? "cyan" : "white",
 
-    backgroundColor: isActive ? "white" : "transparent",
+    // backgroundColor: isActive ? "white" : "transparent",
   };
 };
 
@@ -76,9 +76,14 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+const StyledListItem = styled(ListItem)(({ path, activeLink }) => ({
+  backgroundColor: path === activeLink ? "blueViolet" : "inherit",
+}));
+
 function SideBar({ children }) {
   const location = useLocation();
   const [anchorEl, setAnchorEl] = useState(null);
+  const [activeLink, setActiveLink] = useState("/");
   const open = Boolean(anchorEl);
   const handleClick = (MouseEvent) => {
     setAnchorEl(MouseEvent.currentTarget);
@@ -86,6 +91,15 @@ function SideBar({ children }) {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const handleActiveLink = (path) => {
+    setActiveLink(path);
+  };
+
+  useEffect(() => {
+    setActiveLink(location.pathname);
+  }, [location]);
+
   return (
     <>
       <Box sx={{ display: "flex" }}>
@@ -101,9 +115,11 @@ function SideBar({ children }) {
         >
           <Toolbar sx={{}}>
             <Box component="img" alt="img" sx={{ height: 35 }} src={logo}></Box>
+            <NavLink to ='/' style={{textDecoration:'none',color:'white'}}>
             <Typography variant="h6" noWrap component="div" sx={{ ml: 2 }}>
               React Redux
             </Typography>
+            </NavLink>
           </Toolbar>
           <Toolbar>
             <Search>
@@ -121,6 +137,12 @@ function SideBar({ children }) {
               aria-controls={open ? "resources-menu" : undefined}
               aria-haspopup="true"
               aria-expanded={open ? "ture" : undefined}
+              sx={{
+                '&:hover':{
+                  color:'cyan'
+                }
+              }}
+              fontSize='large'
             >
               <Person3SharpIcon />
             </IconButton>
@@ -149,66 +171,123 @@ function SideBar({ children }) {
               width="200px"
             >
               <List>
-                <ListItem>
-                  <HomeIcon sx={{ color: "white", mr: 2, mb: 0.5 }} />
-                  <StyledLink
-                    to="/"
-                    sx={{ cursor: "pointer" }}
-                    style={navLinkStyles}
+                <StyledLink to="/" style={navLinkStyles}>
+                  <StyledListItem
+                    path="/"
+                    activeLink={activeLink}
+                    onClick={() => handleActiveLink("/")}
+                    sx={{
+                      cursor: "pointer",
+                      "&:hover": {
+                        color: "orange",
+                      },
+                    }}
                   >
+                    <HomeIcon sx={{ color: "white", mr: 2, mb: 0.5 }} />
                     Home
-                  </StyledLink>
-                </ListItem>
-                <ListItem>
-                  <EmailIcon sx={{ color: "white", mr: 2, mb: 0.5 }} />
-                  <StyledLink
-                    to="/posts"
-                    sx={{ cursor: "pointer" }}
-                    style={navLinkStyles}
+                  </StyledListItem>
+                </StyledLink>
+                <StyledLink
+                  to="/posts"
+                  sx={{ cursor: "pointer" }}
+                  style={navLinkStyles}
+                >
+                  <StyledListItem
+                    sx={{
+                      cursor: "pointer",
+                      "&:hover": {
+                        color: "orange",
+                      },
+                    }}
+                    path="/posts"
+                    activeLink={activeLink}
+                    onClick={() => handleActiveLink("/posts")}
                   >
+                    <EmailIcon sx={{ color: "white", mr: 2, mb: 0.5 }} />
                     Posts
-                  </StyledLink>
-                </ListItem>
-                <ListItem>
-                  <CommentIcon sx={{ color: "white", mr: 2, mb: 0.5 }} />
-                  <StyledLink
-                    to="/comments"
-                    sx={{ cursor: "pointer" }}
-                    style={navLinkStyles}
+                  </StyledListItem>
+                </StyledLink>
+                <StyledLink
+                  to="/comments"
+                  sx={{ cursor: "pointer" }}
+                  style={navLinkStyles}
+                >
+                  <StyledListItem
+                    path="/comments"
+                    activeLink={activeLink}
+                    onClick={() => handleActiveLink("/")}
+                    sx={{
+                      cursor: "pointer",
+                      "&:hover": {
+                        color: "orange",
+                      },
+                    }}
                   >
+                    <CommentIcon sx={{ color: "white", mr: 2, mb: 0.5 }} />
                     Comments
-                  </StyledLink>
-                </ListItem>
-                <ListItem>
-                  <PhotoLibraryIcon sx={{ color: "white", mr: 2, mb: 0.5 }} />
-                  <StyledLink
-                    to="/albums"
-                    sx={{ cursor: "pointer" }}
-                    style={navLinkStyles}
+                  </StyledListItem>
+                </StyledLink>
+                <StyledLink
+                  to="/albums"
+                  sx={{ cursor: "pointer" }}
+                  style={navLinkStyles}
+                >
+                  <StyledListItem
+                    path="/albums"
+                    activeLink={activeLink}
+                    onClick={() => handleActiveLink("/albums")}
+                    sx={{
+                      cursor: "pointer",
+                      "&:hover": {
+                        color: "orange",
+                      },
+                    }}
                   >
+                    <PhotoLibraryIcon sx={{ color: "white", mr: 2, mb: 0.5 }} />
                     Albums
-                  </StyledLink>
-                </ListItem>
-                <ListItem>
-                  <ListIcon sx={{ color: "white", mr: 2, mb: 0.5 }} />
-                  <StyledLink
-                    to="/todos"
-                    sx={{ cursor: "pointer" }}
-                    style={navLinkStyles}
+                  </StyledListItem>
+                </StyledLink>
+                <StyledLink
+                  to="/todos"
+                  sx={{ cursor: "pointer" }}
+                  style={navLinkStyles}
+                >
+                  <StyledListItem
+                    path="/todos"
+                    activeLink={activeLink}
+                    onClick={() => handleActiveLink("/todos")}
+                    sx={{
+                      cursor: "pointer",
+                      "&:hover": {
+                        color: "orange",
+                      },
+                    }}
                   >
+                    <ListIcon sx={{ color: "white", mr: 2, mb: 0.5 }} />
                     Todos
-                  </StyledLink>
-                </ListItem>
-                <ListItem>
-                  <PersonIcon sx={{ color: "white", mr: 2, mb: 0.5 }} />
-                  <StyledLink
-                    to="/users"
-                    sx={{ cursor: "pointer" }}
-                    style={navLinkStyles}
+                  </StyledListItem>
+                </StyledLink>
+                <StyledLink
+                  to="/users"
+                  sx={{ cursor: "pointer" }}
+                  style={navLinkStyles}
+                >
+                  <StyledListItem
+                    path="/users"
+                    activeLink={activeLink}
+                    onClick={() => handleActiveLink("/users")}
+                    sx={{
+                      cursor: "pointer",
+                      "&:hover": {
+                        color: "orange",
+                        fontweight: "bold",
+                      },
+                    }}
                   >
+                    <PersonIcon sx={{ color: "white", mr: 2, mb: 0.5 }} />
                     Users
-                  </StyledLink>
-                </ListItem>
+                  </StyledListItem>
+                </StyledLink>
               </List>
             </Box>
           </Drawer>
