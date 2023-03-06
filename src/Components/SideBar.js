@@ -73,14 +73,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 function SideBar({ children }) {
-  const [change, setChange] = useState(false);
+  const [change, setChange] = useState("Home");
   const setClick = () => {
-    if (setChange(!change)) {
-      setChange(false);
-    } else {
-      setChange(true);
-    }
+    setChange(!change);
   };
+  useEffect(() => {}, [change]);
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (MouseEvent) => {
@@ -167,12 +164,7 @@ function SideBar({ children }) {
                     Home
                   </StyledLink>
                 </ListItem>
-                <ListItem
-                  onClick={setClick}
-                  sx={{
-                    backgroundColor: change ? "blueViolet" : "transparent",
-                  }}
-                >
+                <ListItem>
                   <EmailIcon sx={{ color: "white", mr: 2, mb: 0.5 }} />
                   <StyledLink
                     to="/posts"
@@ -182,12 +174,7 @@ function SideBar({ children }) {
                     Posts
                   </StyledLink>
                 </ListItem>
-                <ListItem
-                  onClick={setClick}
-                  sx={{
-                    backgroundColor: change ? "blueViolet" : "transparent",
-                  }}
-                >
+                <ListItem>
                   <CommentIcon sx={{ color: "white", mr: 2, mb: 0.5 }} />
                   <StyledLink
                     to="/comments"
@@ -197,12 +184,7 @@ function SideBar({ children }) {
                     Comments
                   </StyledLink>
                 </ListItem>
-                <ListItem
-                  onClick={setClick}
-                  sx={{
-                    backgroundColor: change ? "blueViolet" : "transparent",
-                  }}
-                >
+                <ListItem>
                   <PhotoLibraryIcon sx={{ color: "white", mr: 2, mb: 0.5 }} />
                   <StyledLink
                     to="/albums"
@@ -222,12 +204,7 @@ function SideBar({ children }) {
                     Todos
                   </StyledLink>
                 </ListItem>
-                <ListItem
-                  onClick={setClick}
-                  sx={{
-                    backgroundColor: change ? "blueViolet" : "transparent",
-                  }}
-                >
+                <ListItem>
                   <PersonIcon sx={{ color: "white", mr: 2, mb: 0.5 }} />
                   <StyledLink
                     to="/users"
