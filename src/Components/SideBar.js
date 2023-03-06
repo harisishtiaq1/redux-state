@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -9,13 +9,13 @@ import EmailIcon from "@mui/icons-material/Email";
 import ListIcon from "@mui/icons-material/List";
 import PhotoLibraryIcon from "@mui/icons-material/PhotoLibrary";
 import PersonIcon from "@mui/icons-material/Person";
-import InputBase from '@mui/material/InputBase';
+import InputBase from "@mui/material/InputBase";
 import HomeIcon from "@mui/icons-material/Home";
 import Typography from "@mui/material/Typography";
-import SearchIcon from '@mui/icons-material/Search';
+import SearchIcon from "@mui/icons-material/Search";
 import { IconButton, List, ListItem, Menu, MenuItem } from "@mui/material";
 import { NavLink } from "react-router-dom";
-import { styled,alpha } from "@mui/system";
+import { styled, alpha } from "@mui/system";
 import Person3SharpIcon from "@mui/icons-material/Person3Sharp";
 import logo from "./img/logo.svg";
 const drawerWidth = 240;
@@ -33,46 +33,54 @@ const StyledLink = styled(NavLink)`
   text-decoration: none;
 `;
 
-const Search = styled('div')(({ theme }) => ({
-  position: 'relative',
+const Search = styled("div")(({ theme }) => ({
+  position: "relative",
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: 'blueViolet',
-  border:'2px solid black',
-  marginRight: 3,
-  width: '100%',
-  [theme.breakpoints.up('sm')]: {
+  backgroundColor: "white",
+  // border: "2px solid black",
+  marginRight: 10,
+  width: "100%",
+  [theme.breakpoints.up("sm")]: {
     marginLeft: theme.spacing(1),
-    width: 'auto',
+    width: "auto",
   },
 }));
 
-const SearchIconWrapper = styled('div')(({ theme }) => ({
+const SearchIconWrapper = styled("div")(({ theme }) => ({
   padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  color:'black',
-  alignItems: 'center',
-  justifyContent: 'center',
+  height: "100%",
+  position: "absolute",
+  pointerEvents: "none",
+  display: "flex",
+  color: "black",
+  alignItems: "center",
+  justifyContent: "center",
 }));
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: 'inherit',
-  '& .MuiInputBase-input': {
+  color: "black",
+  "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: '12ch',
-      '&:focus': {
-        width: '20ch',
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      width: "12ch",
+      "&:focus": {
+        width: "20ch",
       },
     },
   },
 }));
 
 function SideBar({ children }) {
+  const [change, setChange] = useState(false);
+  const setClick = () => {
+    if (setChange(!change)) {
+      setChange(false);
+    } else {
+      setChange(true);
+    }
+  };
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (MouseEvent) => {
@@ -101,15 +109,15 @@ function SideBar({ children }) {
             </Typography>
           </Toolbar>
           <Toolbar>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Search…"
+                inputProps={{ "aria-label": "search" }}
+              />
+            </Search>
             <IconButton
               id="resources-button"
               onClick={handleClick}
@@ -134,7 +142,7 @@ function SideBar({ children }) {
             }}
             variant="permanent"
             anchor="left"
-        >
+          >
             <Box
               p={2}
               sx={{
@@ -143,8 +151,13 @@ function SideBar({ children }) {
               }}
               width="200px"
             >
-              <List sx={{backgroundColor:'blueviolet'}} >
-                <ListItem >
+              <List>
+                <ListItem
+                  onClick={setClick}
+                  sx={{
+                    backgroundColor: change ? "blueViolet" : "transparent",
+                  }}
+                >
                   <HomeIcon sx={{ color: "white", mr: 2, mb: 0.5 }} />
                   <StyledLink
                     to="/"
@@ -154,9 +167,12 @@ function SideBar({ children }) {
                     Home
                   </StyledLink>
                 </ListItem>
-              </List>
-              <List>
-                <ListItem>
+                <ListItem
+                  onClick={setClick}
+                  sx={{
+                    backgroundColor: change ? "blueViolet" : "transparent",
+                  }}
+                >
                   <EmailIcon sx={{ color: "white", mr: 2, mb: 0.5 }} />
                   <StyledLink
                     to="/posts"
@@ -166,9 +182,12 @@ function SideBar({ children }) {
                     Posts
                   </StyledLink>
                 </ListItem>
-              </List>
-              <List>
-                <ListItem>
+                <ListItem
+                  onClick={setClick}
+                  sx={{
+                    backgroundColor: change ? "blueViolet" : "transparent",
+                  }}
+                >
                   <CommentIcon sx={{ color: "white", mr: 2, mb: 0.5 }} />
                   <StyledLink
                     to="/comments"
@@ -178,9 +197,12 @@ function SideBar({ children }) {
                     Comments
                   </StyledLink>
                 </ListItem>
-              </List>
-              <List>
-                <ListItem>
+                <ListItem
+                  onClick={setClick}
+                  sx={{
+                    backgroundColor: change ? "blueViolet" : "transparent",
+                  }}
+                >
                   <PhotoLibraryIcon sx={{ color: "white", mr: 2, mb: 0.5 }} />
                   <StyledLink
                     to="/albums"
@@ -190,8 +212,6 @@ function SideBar({ children }) {
                     Albums
                   </StyledLink>
                 </ListItem>
-              </List>
-              <List>
                 <ListItem>
                   <ListIcon sx={{ color: "white", mr: 2, mb: 0.5 }} />
                   <StyledLink
@@ -202,9 +222,12 @@ function SideBar({ children }) {
                     Todos
                   </StyledLink>
                 </ListItem>
-              </List>
-              <List>
-                <ListItem>
+                <ListItem
+                  onClick={setClick}
+                  sx={{
+                    backgroundColor: change ? "blueViolet" : "transparent",
+                  }}
+                >
                   <PersonIcon sx={{ color: "white", mr: 2, mb: 0.5 }} />
                   <StyledLink
                     to="/users"
@@ -217,7 +240,10 @@ function SideBar({ children }) {
               </List>
             </Box>
           </Drawer>
-          <Box sx={{ mt: 8, flexGrow: 1, ml: 30, width: 1107,p:3 }} component="main">
+          <Box
+            sx={{ mt: 8, flexGrow: 1, ml: 30, width: 1107, p: 3 }}
+            component="main"
+          >
             {children}
           </Box>
         </Box>
