@@ -1,4 +1,4 @@
-import { React } from "react";
+import { React, useState } from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -11,10 +11,18 @@ import PhotoLibraryIcon from "@mui/icons-material/PhotoLibrary";
 import PersonIcon from "@mui/icons-material/Person";
 import HomeIcon from "@mui/icons-material/Home";
 import Typography from "@mui/material/Typography";
-import { List, ListItem } from "@mui/material";
+import {
+  Button,
+  IconButton,
+  List,
+  ListItem,
+  Menu,
+  MenuItem,
+} from "@mui/material";
 import { NavLink } from "react-router-dom";
 import { styled } from "@mui/system";
-
+import Person3SharpIcon from "@mui/icons-material/Person3Sharp";
+import logo from "./img/logo.svg";
 const drawerWidth = 240;
 const Holder = styled(AppBar)(({ theme }) => ({
   // zIndex: theme.zIndex.drawer + 1,
@@ -30,6 +38,14 @@ const StyledLink = styled(NavLink)`
 `;
 
 function SideBar({ children }) {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (MouseEvent) => {
+    setAnchorEl(MouseEvent.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -37,15 +53,38 @@ function SideBar({ children }) {
       <Holder
         sx={{
           backgroundColor: "blueviolet",
-          width: `calc(100% - ${drawerWidth}px)`,
-          ml: `${drawerWidth}px`,
-          // position:'absolute'
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
         }}
       >
-        <Toolbar>
-          <Typography variant="h6" noWrap component="div">
-            Redux Task
+        <Toolbar sx={{}}>
+          <Box component="img" alt="img" sx={{ height: 35 }} src={logo}></Box>
+          <Typography variant="h6" noWrap component="div" sx={{ ml: 2 }}>
+            React Redux
           </Typography>
+        </Toolbar>
+        <Toolbar sx={{}}>
+          <IconButton
+            id="resources-button"
+            onClick={handleClick}
+            aria-control={open ? "resources-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? "ture" : undefined}
+          >
+            <Person3SharpIcon />
+            <Menu
+              id="resources-menu"
+              anchorEl={anchorEl}
+              open={open}
+              MenuListProps={{ "aria-labelledby": "resources-button" }}
+              onClose={handleClose}
+            >
+              <MenuItem onClick={handleClose}>Blogs</MenuItem>
+              <MenuItem onClick={handleClose}>Contacts</MenuItem>
+              <MenuItem onClick={handleClose}>Logout</MenuItem>
+            </Menu>
+          </IconButton>
         </Toolbar>
       </Holder>
       {/* </Holder> */}
@@ -56,6 +95,7 @@ function SideBar({ children }) {
               backgroundColor: "Black",
               width: drawerWidth,
               flexShrink: 0,
+              mt: 8,
             },
           }}
           variant="permanent"
@@ -144,7 +184,7 @@ function SideBar({ children }) {
             </List>
           </Box>
         </Drawer>
-        <Box sx={{ mt: 7, flexGrow: 1, ml: 30, width: 985 }} component="main">
+        <Box sx={{ mt: 8, flexGrow: 1, ml: 30, width: 985 }} component="main">
           {children}
         </Box>
       </Box>
