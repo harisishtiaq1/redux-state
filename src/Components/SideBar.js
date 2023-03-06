@@ -10,15 +10,19 @@ import ListIcon from "@mui/icons-material/List";
 import PhotoLibraryIcon from "@mui/icons-material/PhotoLibrary";
 import PersonIcon from "@mui/icons-material/Person";
 import InputBase from "@mui/material/InputBase";
+import { useLocation } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import Typography from "@mui/material/Typography";
 import SearchIcon from "@mui/icons-material/Search";
 import { IconButton, List, ListItem, Menu, MenuItem } from "@mui/material";
 import { NavLink } from "react-router-dom";
-import { styled, alpha } from "@mui/system";
+import { styled } from "@mui/system";
 import Person3SharpIcon from "@mui/icons-material/Person3Sharp";
 import logo from "./img/logo.svg";
+
+
 const drawerWidth = 240;
+
 const Holder = styled(AppBar)(({ theme }) => ({
   // zIndex: theme.zIndex.drawer + 1,
 }));
@@ -26,6 +30,7 @@ const navLinkStyles = ({ isActive }) => {
   return {
     fontWeight: isActive ? "bold" : "normal",
     color: isActive ? "cyan" : "white",
+    // backgroundColor: isActive ? 'white': 'transparent'
   };
 };
 
@@ -37,7 +42,6 @@ const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
   backgroundColor: "white",
-  // border: "2px solid black",
   marginRight: 10,
   width: "100%",
   [theme.breakpoints.up("sm")]: {
@@ -73,11 +77,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 function SideBar({ children }) {
-  const [change, setChange] = useState("Home");
-  const setClick = () => {
-    setChange(!change);
-  };
-  useEffect(() => {}, [change]);
+  const location = useLocation();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (MouseEvent) => {
@@ -149,12 +149,7 @@ function SideBar({ children }) {
               width="200px"
             >
               <List>
-                <ListItem
-                  onClick={setClick}
-                  sx={{
-                    backgroundColor: change ? "blueViolet" : "transparent",
-                  }}
-                >
+                <ListItem>
                   <HomeIcon sx={{ color: "white", mr: 2, mb: 0.5 }} />
                   <StyledLink
                     to="/"
