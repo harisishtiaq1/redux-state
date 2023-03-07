@@ -11,7 +11,6 @@ import PhotoLibraryIcon from "@mui/icons-material/PhotoLibrary";
 import PersonIcon from "@mui/icons-material/Person";
 import InputBase from "@mui/material/InputBase";
 import { useLocation } from "react-router-dom";
-import Divider from "@mui/material/Divider";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import HomeIcon from "@mui/icons-material/Home";
@@ -22,6 +21,7 @@ import {
   IconButton,
   List,
   ListItem,
+  ListItemIcon,
   Menu,
   MenuItem,
 } from "@mui/material";
@@ -37,7 +37,7 @@ const Holder = styled(AppBar)(({ theme }) => ({
 const navLinkStyles = ({ isActive }) => {
   return {
     fontWeight: isActive ? "bold" : "normal",
-    color: isActive ? "cyan" : "white",
+    color: isActive ? "white" : "white",
   };
 };
 const navItems = [
@@ -91,7 +91,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const StyledListItem = styled(ListItem)(({ path, activeLink }) => ({
-  backgroundColor: path === activeLink ? "blueViolet" : "inherit",
+  backgroundColor: path === activeLink ? "Brown" : "inherit",
+  borderRadius:'5%'
 }));
 
 function SideBar({ children }) {
@@ -119,13 +120,19 @@ function SideBar({ children }) {
   }, [location]);
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Divider />
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center",mt:10 }}>
       <List>
         {navItems.map((item) => (
           <ListItem key={item.name} disablePadding>
             <ListItemButton component={NavLink} to={item.to}>
-              <ListItemText primary={item.name} />
+            <ListItemIcon>
+              <item.icon/>
+            </ListItemIcon>
+              <ListItemText primary={item.name} sx={{
+                "&:hover":{
+                  color:'red'
+                }
+              }} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -139,7 +146,7 @@ function SideBar({ children }) {
         {/* <Holder> */}
         <Holder
           sx={{
-            backgroundColor: "blueviolet",
+            backgroundColor: "brown",
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-between",
@@ -171,12 +178,13 @@ function SideBar({ children }) {
               aria-expanded={open ? "ture" : undefined}
               sx={{
                 "&:hover": {
-                  color: "cyan",
+                  color: "white",
                 },
               }}
             >
               <Person3SharpIcon fontSize="large" />
             </IconButton>
+
             <IconButton onClick={handleDrawerToggle}>
               <MenuIcon
                 fontSize="large"
@@ -271,6 +279,11 @@ function SideBar({ children }) {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
+              backgroundColor:'brown',
+              color:'white',
+              display:'flex',
+              alignItems:'center',
+              // justifyContent:'center'
             },
           }}
         >
