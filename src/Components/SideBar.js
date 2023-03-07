@@ -26,7 +26,7 @@ import {
   Menu,
   MenuItem,
   Tooltip,
-  Button
+  Button,
 } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import { styled } from "@mui/system";
@@ -97,7 +97,7 @@ const StyledListItem = styled(ListItem)(({ path, activeLink }) => ({
 }));
 
 function SideBar({ children }) {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = useState(false);
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -116,14 +116,14 @@ function SideBar({ children }) {
   const handleActiveLink = (path) => {
     setActiveLink(path);
   };
-  const signin=()=>{
-    let path=("/signin")
-    navigate(path)
-  }
-  const signup=()=>{
-    let path=('/signup')
-    navigate(path)
-}
+  const signin = () => {
+    let path = "/signin";
+    navigate(path);
+  };
+  const signup = () => {
+    let path = "/signup";
+    navigate(path);
+  };
   useEffect(() => {
     setActiveLink(location.pathname);
   }, [location]);
@@ -173,17 +173,30 @@ function SideBar({ children }) {
             </NavLink>
           </Toolbar>
           <Toolbar>
-            
-            <Button onClick={()=>signin()}   sx={{color:'white',backgroundColor:'black',mr:3,
-                '&:hover':{
-                  backgroundColor:'black'
-                }}}>
+            <Button
+              onClick={() => signin()}
+              sx={{
+                color: "white",
+                backgroundColor: "black",
+                mr: 3,
+                "&:hover": {
+                  backgroundColor: "black",
+                },
+              }}
+            >
               SignIn
             </Button>
-            <Button onClick={()=>signup()} sx={{color:'white',backgroundColor:'black',mr:3,
-          '&:hover':{
-            backgroundColor:'black'
-          }}}>
+            <Button
+              onClick={() => signup()}
+              sx={{
+                color: "white",
+                backgroundColor: "black",
+                mr: 3,
+                "&:hover": {
+                  backgroundColor: "black",
+                },
+              }}
+            >
               Signup
             </Button>
             <Search>
@@ -195,7 +208,7 @@ function SideBar({ children }) {
                 inputProps={{ "aria-label": "search" }}
               />
             </Search>
-            <Tooltip title="User" >
+            <Tooltip title="User">
               <IconButton
                 id="resources-button"
                 onClick={handleClick}
