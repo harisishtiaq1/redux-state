@@ -29,7 +29,7 @@ import { NavLink } from "react-router-dom";
 import { styled } from "@mui/system";
 import Person3SharpIcon from "@mui/icons-material/Person3Sharp";
 import logo from "./img/logo.svg";
-const drawerWidth = 240;
+const drawerWidth = 200;
 
 const Holder = styled(AppBar)(({ theme }) => ({
   

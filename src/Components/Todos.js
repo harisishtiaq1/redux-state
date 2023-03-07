@@ -12,7 +12,7 @@ import { getBooks } from "./Slice/TodosSlice";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
+    backgroundColor:'brown',
     color: theme.palette.common.white,
   },
   [`&.${tableCellClasses.body}`]: {
