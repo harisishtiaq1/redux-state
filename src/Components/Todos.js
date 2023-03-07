@@ -46,7 +46,7 @@ function Todos() {
           </TableHead>
           <TableBody>
             {todoBooks &&
-              todoBooks.map((post) => {
+              todoBooks.slice(0,100).map((post) => {
                 const { id, title } = post;
                 return (
                   <StyledTableRow>
