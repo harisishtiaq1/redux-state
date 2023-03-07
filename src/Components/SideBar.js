@@ -24,33 +24,29 @@ import {
   ListItem,
   Menu,
   MenuItem,
-  Link,
 } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import { styled } from "@mui/system";
 import Person3SharpIcon from "@mui/icons-material/Person3Sharp";
 import logo from "./img/logo.svg";
-import { createTheme } from "@mui/material";
 const drawerWidth = 240;
 
 const Holder = styled(AppBar)(({ theme }) => ({
-  // zIndex: theme.zIndex.drawer + 1,
+  
 }));
 const navLinkStyles = ({ isActive }) => {
   return {
     fontWeight: isActive ? "bold" : "normal",
     color: isActive ? "cyan" : "white",
-
-    // backgroundColor: isActive ? "white" : "transparent",
   };
 };
 const navItems = [
-  { name: "Home", to: "/" ,icon: HomeIcon},
-  { name: "Posts", to: "/posts",icon: EmailIcon },
-  { name: "Comments", to: "/comments",icon: CommentIcon },
-  { name: "Albums", to: "/albums",icon: PhotoLibraryIcon },
-  { name: "Todos", to: "/todos",icon: ListIcon },
-  { name: "Users", to: "/users",icon: PersonIcon },
+  { name: "Home", to: "/", icon: HomeIcon },
+  { name: "Posts", to: "/posts", icon: EmailIcon },
+  { name: "Comments", to: "/comments", icon: CommentIcon },
+  { name: "Albums", to: "/albums", icon: PhotoLibraryIcon },
+  { name: "Todos", to: "/todos", icon: ListIcon },
+  { name: "Users", to: "/users", icon: PersonIcon },
 ];
 const StyledLink = styled(NavLink)`
   text-decoration: none;
@@ -178,11 +174,10 @@ function SideBar({ children }) {
                   color: "cyan",
                 },
               }}
-              fontSize="large"
             >
-              <Person3SharpIcon />
+              <Person3SharpIcon fontSize="large" />
             </IconButton>
-            <IconButton onClick={handleDrawerToggle} >
+            <IconButton onClick={handleDrawerToggle}>
               <MenuIcon
                 fontSize="large"
                 sx={{ display: { xs: "block", sm: "none" } }}
@@ -214,26 +209,25 @@ function SideBar({ children }) {
               width="200px"
             >
               <List>
-              {navItems.map((item) => (
-                <StyledLink to={item.to} style={navLinkStyles}>
-                  <StyledListItem
-                    path={item.to}
-                    activeLink={activeLink}
-                    onClick={() => handleActiveLink(item.to)}
-                    sx={{
-                      cursor: "pointer",
-                      "&:hover": {
-                        color: "orange",
-                      },
-                    }}
-                  >
-                    <item.icon sx={{ color: "white", mr: 2, mb: 0.5 }} />
-                    {/* <HomeIcon  /> */}
-                    {item.name}
-                  </StyledListItem>
-                </StyledLink>
-              ))}
-               
+                {navItems.map((item) => (
+                  <StyledLink to={item.to} style={navLinkStyles}>
+                    <StyledListItem
+                      path={item.to}
+                      activeLink={activeLink}
+                      onClick={() => handleActiveLink(item.to)}
+                      sx={{
+                        cursor: "pointer",
+                        "&:hover": {
+                          color: "orange",
+                        },
+                      }}
+                    >
+                      <item.icon sx={{ color: "white", mr: 2, mb: 0.5 }} />
+                      {/* <HomeIcon  /> */}
+                      {item.name}
+                    </StyledListItem>
+                  </StyledLink>
+                ))}
               </List>
             </Box>
           </Drawer>
