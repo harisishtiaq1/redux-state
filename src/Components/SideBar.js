@@ -195,7 +195,7 @@ function SideBar({ children }) {
                 inputProps={{ "aria-label": "search" }}
               />
             </Search>
-            <Tooltip title="User">
+            <Tooltip title="User" >
               <IconButton
                 id="resources-button"
                 onClick={handleClick}
