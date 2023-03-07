@@ -1,4 +1,5 @@
 import { React, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -25,6 +26,7 @@ import {
   Menu,
   MenuItem,
   Tooltip,
+  Button
 } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import { styled } from "@mui/system";
@@ -95,6 +97,7 @@ const StyledListItem = styled(ListItem)(({ path, activeLink }) => ({
 }));
 
 function SideBar({ children }) {
+  const navigate=useNavigate();
   const [mobileOpen, setMobileOpen] = useState(false);
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -113,7 +116,14 @@ function SideBar({ children }) {
   const handleActiveLink = (path) => {
     setActiveLink(path);
   };
-
+  const signin=()=>{
+    let path=("/signin")
+    navigate(path)
+  }
+  const signup=()=>{
+    let path=('/signup')
+    navigate(path)
+}
   useEffect(() => {
     setActiveLink(location.pathname);
   }, [location]);
@@ -163,6 +173,19 @@ function SideBar({ children }) {
             </NavLink>
           </Toolbar>
           <Toolbar>
+            
+            <Button onClick={()=>signin()}   sx={{color:'white',backgroundColor:'black',mr:3,
+                '&:hover':{
+                  backgroundColor:'black'
+                }}}>
+              SignIn
+            </Button>
+            <Button onClick={()=>signup()} sx={{color:'white',backgroundColor:'black',mr:3,
+          '&:hover':{
+            backgroundColor:'black'
+          }}}>
+              Signup
+            </Button>
             <Search>
               <SearchIconWrapper>
                 <SearchIcon />
