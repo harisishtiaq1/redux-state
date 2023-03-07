@@ -172,29 +172,29 @@ function SideBar({ children }) {
                 inputProps={{ "aria-label": "search" }}
               />
             </Search>
-            <Tooltip title='User'>
-            <IconButton
-              id="resources-button"
-              onClick={handleClick}
-              aria-controls={open ? "resources-menu" : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? "ture" : undefined}
-              sx={{
-                "&:hover": {
-                  color: "white",
-                },
-              }}
-            >
-              <Person3SharpIcon fontSize="large" />
-            </IconButton>
+            <Tooltip title="User">
+              <IconButton
+                id="resources-button"
+                onClick={handleClick}
+                aria-controls={open ? "resources-menu" : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? "ture" : undefined}
+                sx={{
+                  "&:hover": {
+                    color: "white",
+                  },
+                }}
+              >
+                <Person3SharpIcon fontSize="large" />
+              </IconButton>
             </Tooltip>
-              <Tooltip title='MENU'>
-            <IconButton onClick={handleDrawerToggle}>
-              <MenuIcon
-                fontSize="large"
-                sx={{ display: { xs: "block", sm: "none" } }}
-              />
-            </IconButton>
+            <Tooltip title="MENU">
+              <IconButton onClick={handleDrawerToggle}>
+                <MenuIcon
+                  fontSize="large"
+                  sx={{ display: { xs: "block", sm: "none" } }}
+                />
+              </IconButton>
             </Tooltip>
           </Toolbar>
         </AppBar>
