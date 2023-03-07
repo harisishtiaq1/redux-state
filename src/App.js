@@ -2,6 +2,7 @@ import Posts from "./Components/Posts";
 import Comments from "./Components/Comments";
 import Albums from "./Components/Albums";
 import Todos from "./Components/Todos";
+import "./App.css";
 import Users from "./Components/Users";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Main from "./Components/Main";
