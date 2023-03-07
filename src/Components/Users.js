@@ -12,7 +12,7 @@ import { getBooks } from "./Slice/UsersSlice";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor:'brown',
+    backgroundColor: "brown",
     color: theme.palette.common.white,
   },
   [`&.${tableCellClasses.body}`]: {
@@ -34,7 +34,7 @@ function Users() {
 
   useEffect(() => {
     dispatch(getBooks()).unwrap();
-  },[]);
+  }, []);
   return (
     <>
       {message !== "" && <h2>{message}</h2>}
