@@ -90,7 +90,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const StyledListItem = styled(ListItem)(({ path, activeLink }) => ({
-  backgroundColor: path === activeLink ? "Brown" : "inherit",
+  backgroundColor: path === activeLink ? "black" : "inherit",
   borderRadius: "5%",
 }));
 
@@ -203,7 +203,7 @@ function SideBar({ children }) {
           <Drawer
             sx={{
               "& .MuiDrawer-paper": {
-                backgroundColor: "Black",
+                backgroundColor: "brown",
                 width: drawerWidth,
                 flexShrink: 0,
                 mt: 8,
@@ -295,7 +295,6 @@ function SideBar({ children }) {
               color: "white",
               display: "flex",
               alignItems: "center",
-              // justifyContent:'center'
             },
           }}
         >
