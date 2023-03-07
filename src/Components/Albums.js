@@ -38,7 +38,7 @@ function Albums() {
 
   useEffect(() => {
     dispatch(getBooks()).unwrap();
-  }, []);
+});
 
   return (
     <>

@@ -35,7 +35,7 @@ function Comments() {
 
   useEffect(() => {
     dispatch(getBooks()).unwrap();
-  }, []);
+  });
   return (
     <>
       {message && <h2>{message}</h2>}

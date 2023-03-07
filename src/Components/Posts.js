@@ -17,14 +17,13 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 14,
-    border:'2px dashed black',
+    border: "2px dashed black",
   },
 }));
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
   "&:nth-of-type(odd)": {
     backgroundColor: theme.palette.action.hover,
   },
-  
 }));
 function Posts() {
   const { postBooks, message } = useSelector((state) => state.postReducer);
@@ -33,11 +32,11 @@ function Posts() {
 
   useEffect(() => {
     dispatch(getBooks()).unwrap();
-  }, []);
+  });
   return (
     <>
       {message !== "" && <h2>{message}</h2>}
-      <TableContainer component={Paper} sx={{maxHeight:'500px'}}>
+      <TableContainer component={Paper} sx={{ maxHeight: "500px" }}>
         <Table aria-label="simple table" stickyHeader>
           <TableHead>
             <StyledTableRow>
