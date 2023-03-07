@@ -2,9 +2,7 @@ import React from "react";
 import { Grid, Typography, Box, Stack, Container } from "@mui/material";
 function Main() {
   return (
-    <Box sx={{ ml: 35 }}>
-      <Grid container spacing={2}>
-        <Grid item xs={12} md={6} lg={3}>
+    <Box>
           <Box
             sx={{
               bgcolor: "background.paper",
@@ -12,14 +10,13 @@ function Main() {
               pb: 6,
             }}
           >
-            <Container maxWidth="sm">
+            <Container maxWidth={354} sx={{mr:5}}>
               <Typography
                 component="h1"
                 variant="h2"
                 align="center"
                 color="text.primary"
                 gutterBottom
-                sx={{ ml: 10 }}
               >
                 Redux Toolkit
               </Typography>
@@ -27,7 +24,6 @@ function Main() {
                 variant="h5"
                 align="center"
                 color="text.secondary"
-                width={345}
                 paragraph
               >
                 We can't solve every use case, but in the spirit of
@@ -42,8 +38,6 @@ function Main() {
               ></Stack>
             </Container>
           </Box>
-        </Grid>
-      </Grid>
     </Box>
   );
 }
