@@ -219,7 +219,6 @@ function SideBar({ children }) {
                 display: "flex",
                 flexDirection: "column",
               }}
-              width="200px"
             >
               <List>
                 {navItems.map((item) => (
