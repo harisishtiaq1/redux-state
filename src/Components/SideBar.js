@@ -31,9 +31,7 @@ import Person3SharpIcon from "@mui/icons-material/Person3Sharp";
 import logo from "./img/logo.svg";
 const drawerWidth = 200;
 
-const Holder = styled(AppBar)(({ theme }) => ({
-  
-}));
+const Holder = styled(AppBar)(({ theme }) => ({}));
 const navLinkStyles = ({ isActive }) => {
   return {
     fontWeight: isActive ? "bold" : "normal",
@@ -92,7 +90,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const StyledListItem = styled(ListItem)(({ path, activeLink }) => ({
   backgroundColor: path === activeLink ? "Brown" : "inherit",
-  borderRadius:'5%'
+  borderRadius: "5%",
 }));
 
 function SideBar({ children }) {
@@ -120,19 +118,22 @@ function SideBar({ children }) {
   }, [location]);
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center",mt:10 }}>
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center", mt: 10 }}>
       <List>
         {navItems.map((item) => (
           <ListItem key={item.name} disablePadding>
             <ListItemButton component={NavLink} to={item.to}>
-            <ListItemIcon>
-              <item.icon/>
-            </ListItemIcon>
-              <ListItemText primary={item.name} sx={{
-                "&:hover":{
-                  color:'red'
-                }
-              }} />
+              <ListItemIcon>
+                <item.icon />
+              </ListItemIcon>
+              <ListItemText
+                primary={item.name}
+                sx={{
+                  "&:hover": {
+                    color: "white",
+                  },
+                }}
+              />
             </ListItemButton>
           </ListItem>
         ))}
@@ -279,10 +280,10 @@ function SideBar({ children }) {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
-              backgroundColor:'brown',
-              color:'white',
-              display:'flex',
-              alignItems:'center',
+              backgroundColor: "brown",
+              color: "white",
+              display: "flex",
+              alignItems: "center",
               // justifyContent:'center'
             },
           }}
