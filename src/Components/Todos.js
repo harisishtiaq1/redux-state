@@ -36,7 +36,7 @@ function Todos() {
   return (
     <>
       {message && <h2>{message}</h2>}
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} sx={{maxHeight:'500px'}}>
         <Table aria-label="simple table"  stickyHeader   >
           <TableHead>
             <StyledTableRow>

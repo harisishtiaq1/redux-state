@@ -39,7 +39,7 @@ function Comments() {
   return (
     <>
       {message && <h2>{message}</h2>}
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} sx={{maxHeight:'500px'}}>
         <Table aria-label="sticky table" stickyHeader>
           <TableHead position="fixed">
             <StyledTableRow>
