@@ -17,15 +17,14 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 14,
+    border:'2px dotted brown'
+
   },
 }));
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
   "&:nth-of-type(odd)": {
     backgroundColor: theme.palette.action.hover,
-  },
-  "&:last-child td, &:last-child th": {
-    border: 0,
   },
 }));
 function Users() {
@@ -39,7 +38,7 @@ function Users() {
     <>
       {message !== "" && <h2>{message}</h2>}
       <TableContainer component={Paper}>
-        <Table aria-label="simple table">
+        <Table aria-label="simple table" stickyHeader>
           <TableHead>
             <StyledTableRow>
               <StyledTableCell>Id</StyledTableCell>
