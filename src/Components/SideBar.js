@@ -29,9 +29,9 @@ import { NavLink } from "react-router-dom";
 import { styled } from "@mui/system";
 import Person3SharpIcon from "@mui/icons-material/Person3Sharp";
 import logo from "./img/logo.svg";
+
 const drawerWidth = 200;
 
-const Holder = styled(AppBar)(({ theme }) => ({}));
 const navLinkStyles = ({ isActive }) => {
   return {
     fontWeight: isActive ? "bold" : "normal",
@@ -145,7 +145,7 @@ function SideBar({ children }) {
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
         {/* <Holder> */}
-        <Holder
+        <AppBar
           sx={{
             backgroundColor: "brown",
             display: "flex",
@@ -193,7 +193,7 @@ function SideBar({ children }) {
               />
             </IconButton>
           </Toolbar>
-        </Holder>
+        </AppBar>
         {/* </Holder> */}
         <Box sx={{ display: "flex", flexDirection: "row" }}>
           <Drawer
