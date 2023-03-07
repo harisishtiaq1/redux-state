@@ -234,8 +234,16 @@ function SideBar({ children }) {
                         },
                       }}
                     >
-                      <item.icon sx={{ color: "white", mr: 2, mb: 0.5 }} />
-                      {/* <HomeIcon  /> */}
+                      <item.icon
+                        sx={{
+                          color: "white",
+                          mr: 2,
+                          mb: 0.5,
+                          "&:hover": {
+                            color: "orange",
+                          },
+                        }}
+                      />
                       {item.name}
                     </StyledListItem>
                   </StyledLink>
