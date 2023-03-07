@@ -12,7 +12,7 @@ import { getBooks } from "./Slice/TodosSlice";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor:'brown',
+    backgroundColor: "brown",
     color: theme.palette.common.white,
   },
   [`&.${tableCellClasses.body}`]: {
@@ -33,7 +33,7 @@ function Todos() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getBooks()).unwrap();
-  },[]);
+  }, []);
   return (
     <>
       {message && <h2>{message}</h2>}

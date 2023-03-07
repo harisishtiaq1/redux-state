@@ -24,6 +24,7 @@ import {
   ListItemIcon,
   Menu,
   MenuItem,
+  Tooltip,
 } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import { styled } from "@mui/system";
@@ -171,6 +172,7 @@ function SideBar({ children }) {
                 inputProps={{ "aria-label": "search" }}
               />
             </Search>
+            <Tooltip title='User'>
             <IconButton
               id="resources-button"
               onClick={handleClick}
@@ -185,13 +187,15 @@ function SideBar({ children }) {
             >
               <Person3SharpIcon fontSize="large" />
             </IconButton>
-
+            </Tooltip>
+              <Tooltip title='MENU'>
             <IconButton onClick={handleDrawerToggle}>
               <MenuIcon
                 fontSize="large"
                 sx={{ display: { xs: "block", sm: "none" } }}
               />
             </IconButton>
+            </Tooltip>
           </Toolbar>
         </AppBar>
         {/* </Holder> */}

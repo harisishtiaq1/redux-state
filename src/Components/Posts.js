@@ -12,7 +12,7 @@ import { getBooks } from "./Slice/PostSlice";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor:'brown',
+    backgroundColor: "brown",
     color: theme.palette.common.white,
   },
   [`&.${tableCellClasses.body}`]: {
@@ -34,7 +34,7 @@ function Posts() {
 
   useEffect(() => {
     dispatch(getBooks()).unwrap();
-  },[]);
+  }, []);
   return (
     <>
       {message !== "" && <h2>{message}</h2>}
