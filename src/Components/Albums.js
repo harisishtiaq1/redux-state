@@ -12,15 +12,12 @@ import { getBooks } from "./Slice/AlbumSlice";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor:'brown',
+    backgroundColor: "brown",
     color: theme.palette.common.white,
-
-
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 14,
-    border:'2px dashed black',
-
+    border: "2px dashed black",
   },
 }));
 
@@ -38,12 +35,12 @@ function Albums() {
 
   useEffect(() => {
     dispatch(getBooks()).unwrap();
-});
+  });
 
   return (
     <>
       {message && <h2>{message}</h2>}
-      <TableContainer component={Paper} sx={{maxHeight:'500px'}}>
+      <TableContainer component={Paper} sx={{ maxHeight: "500px" }}>
         <Table aria-label="simple table" stickyHeader>
           <TableHead>
             <StyledTableRow>
