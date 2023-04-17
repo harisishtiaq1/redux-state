@@ -23,7 +23,6 @@ const albumSlice = createSlice({
       console.log({ action });
       state.books = action.payload;
     });
-
     builder.addCase(getBooks.rejected, (state, action) => {
       state.message = "rejected";
     });
